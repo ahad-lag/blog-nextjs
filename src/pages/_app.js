@@ -1,6 +1,18 @@
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <NextNProgress
+        color="#818cf8"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp
