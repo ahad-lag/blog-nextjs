@@ -1,10 +1,10 @@
-import MainPage from "../component/layout/mainPage";
+import MainHomePage from "../component/layout/home/mainHomePage";
 import MasterPage from "../component/layout/masterPage";
 
 export default function Home() {
   return (
     <MasterPage>
-      <MainPage />
+      <MainHomePage />
     </MasterPage>
   )
 }

@@ -1,6 +1,6 @@
 
 
-const SideBar = () => {
+const HomeSideBar = () => {
     return(
         <>
             <div className='break-all bg-white dark:bg-dark-890 sm:px-5 sm:py-5 p-5 rounded shadow-md ml-4 mb-4'>
@@ -31,4 +31,4 @@ const SideBar = () => {
     )
 }
 
-export default SideBar;
+export default HomeSideBar;
