@@ -1,4 +1,4 @@
-Created by [https://github.com/ahad-lag](Ahad Lag).
+Created by Ahad Lag.
 
 ## Getting Started
 
