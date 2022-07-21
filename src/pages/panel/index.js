@@ -1,10 +1,11 @@
 import MasterPage from "../../component/layout/masterPage"
+import ProfilePage from "../../component/layout/panel/profile-page";
 
 
 const Admin = () => {
     return(
         <MasterPage>
-            <h1>test</h1>
+            <ProfilePage />
         </MasterPage>
     )
 }
