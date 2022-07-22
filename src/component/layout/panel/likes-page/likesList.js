@@ -4,18 +4,19 @@ const likesList = [
     {
         "like_id": 1,
         "user": "ahad lag",
-        "article_id": 1,
+        "article_url": 'article/1',
         "article": "title 1"
     },
     {
         "like_id": 2,
         "user": "agha reza",
-        "article_id": 23,
+        "article_url": 'article/23',
         "article": "title 23"
     }
 ];
 
 const LikesList = () => {
+    let indexRowItem = 1
     return(
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="mt-3 flex flex-col">
@@ -41,7 +42,7 @@ const LikesList = () => {
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                 {
-                                    likesList.map((index , like_id , article_id , article , user) => <LikesListItem index={index} article_id={article_id} article={article} like_id={like_id} user={user} key={like_id}/>)
+                                    likesList.map((article) => <LikesListItem indexRowItem={indexRowItem++} article={article} key={article.like_id}/>)
                                 }
                                 </tbody>
                             </table>
