@@ -4,17 +4,17 @@ import Link from "next/link";
 const LikesListItem = ({ indexRowItem , article }) => {
     return(
         <tr >
-            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+            <td className="font-bold whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-800 sm:pl-6">
                 {indexRowItem}
             </td>
             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 <Link href={article.article_url}>
-                    <a>
+                    <a className="font-bold transition duration-200 dark:hover:text-blue-450 hover:text-indigo-700 text-gray-800">
                         {article.article}
                     </a>
                 </Link>
             </td>
-            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{article.user}</td>
+            <td className="font-bold whitespace-nowrap px-3 py-4 text-sm text-gray-800">{article.user}</td>
             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                 <button
                     type="button"

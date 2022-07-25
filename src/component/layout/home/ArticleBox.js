@@ -4,7 +4,7 @@ const ArticleBox = () => {
     return(
         <div className='p-4 flex flex-col dark:bg-dark-930 bg-white rounded h-96 shadow-md'>
             <Image src='/img/post.jpg' className='lozad w-full h-full object-cover transform transition duration-200 hover:scale-110' height={160} width={250}/>
-            <h4 className='font-bold text-xl text-justify transition duration-200  dark:hover:text-blue-450 hover:text-blue-700 text-gray-800 overflow-hidden my-4'>تیتر یک</h4>
+            <h4 className='font-bold text-xl text-justify transition duration-200  dark:hover:text-blue-450 hover:text-indigo-700 text-gray-800 overflow-hidden my-4'>تیتر یک</h4>
             <p className='text-ellipsis overflow-hidden break-words'>ین محصول قابل استفاده در توالت‌های عمومی و خانگی می‌باشد. ین محصول قابل استفاده در توالت‌های عمومی و خانگی می‌باشد.140</p>
             <hr className='my-3'/>
             <div className='flex justify-between'>

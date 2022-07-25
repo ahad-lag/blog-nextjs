@@ -1,5 +1,12 @@
+import { Provider , useSelector } from 'react-redux';
 import NextNProgress from "nextjs-progressbar";
+import { store } from './../store/index'
 import '../styles/globals.css'
+import auth from '../hoc/auth';
+
+function checkAuth() {
+  return useSelector(state => state.auth.is_auth)
+}
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,9 +18,12 @@ function MyApp({ Component, pageProps }) {
         height={3}
         showOnShallow={true}
       />
-      <Component {...pageProps} />
+      <Provider store={store}>
+          <Component checkAuth={checkAuth} {...pageProps} />
+      </Provider>
     </>
   );
 }
 
-export default MyApp
+
+export default MyApp;

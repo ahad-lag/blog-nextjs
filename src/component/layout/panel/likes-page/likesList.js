@@ -26,13 +26,13 @@ const LikesList = () => {
                             <table className="min-w-full divide-y divide-gray-300">
                                 <thead className="bg-gray-50">
                                 <tr>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
+                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-extrabold text-gray-900 sm:pl-6">
                                         ردیف
                                     </th>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
+                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-extrabold text-gray-900 sm:pl-6">
                                         نام مقاله
                                     </th>
-                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-semibold text-gray-900 sm:pl-6">
+                                    <th scope="col" className="py-3.5 pl-4 pr-3 text-right text-sm font-extrabold text-gray-900 sm:pl-6">
                                         نویسنده
                                     </th>
                                     <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">

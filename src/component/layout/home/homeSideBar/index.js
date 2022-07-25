@@ -4,7 +4,7 @@ const HomeSideBar = () => {
     return(
         <>
             <div className='break-all bg-white dark:bg-dark-890 sm:px-5 sm:py-5 p-5 rounded shadow-md ml-4 mb-4'>
-                <div className='font-bold text-xl text-center transition duration-200  dark:hover:text-blue-450 hover:text-blue-700 text-gray-800 overflow-hiddenfont-bold overflow-hidden'>دسته بندی ها</div>
+                <div className='font-bold text-xl text-center transition duration-200  dark:hover:text-blue-450 hover:text-indigo-700 text-gray-800 overflow-hiddenfont-bold overflow-hidden'>دسته بندی ها</div>
                 <hr className='my-3'/>
                 <div className='flex flex-wrap items-center'>
                     <button
@@ -16,7 +16,7 @@ const HomeSideBar = () => {
                 </div>
             </div>
             <div className='break-all bg-white dark:bg-dark-890 sm:px-5 sm:py-5 p-5 rounded shadow-md ml-4 mb-4'>
-                <div className='font-bold text-xl text-center transition duration-200  dark:hover:text-blue-450 hover:text-blue-700 text-gray-800 overflow-hiddenfont-bold overflow-hidden'>ناشران</div>
+                <div className='font-bold text-xl text-center transition duration-200  dark:hover:text-blue-450 hover:text-indigo-700 text-gray-800 overflow-hiddenfont-bold overflow-hidden'>ناشران</div>
                 <hr className='my-3'/>
                 <div className='flex flex-wrap items-center'>
                     <button

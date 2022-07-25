@@ -1,4 +1,3 @@
-import PanelSideBar from '../panel-side-bar';
 import MasterPanelPage from "../masterPanelPage";
 
 const ProfilePage = () => {
