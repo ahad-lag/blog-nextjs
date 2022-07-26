@@ -1,13 +1,24 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
+import axios from "axios";
+import { loginUser } from "../../../../store/slices/authSlice";
 import Input from "../../general/input";
 import Button from "../../general/button";
+import WarningModal from "../../general/modal/warningModal";
 
-const LoginIndex = () => {
+const LoginIndex = ({ router }) => {
+
+    const dispatch = useDispatch();
 
     const [ inputs ,setInputs ] = useState({
         userName : '',
         passWord : ''
+    })
+    const [ validateModal , setValidateModal] = useState({
+        text : 'هشدار',
+        type : 'warning',
+        status : false
     })
 
     const chengeInputHandler = (e) => {
@@ -17,8 +28,33 @@ const LoginIndex = () => {
         })
     }
 
-    const loginUserHandler = () => {
-        null
+    const loginUserHandler = async (e) => {
+        e.preventDefault();
+        if(! inputs.userName){
+            setValidateModal({
+                text : 'لطفا نام کاربری خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.passWord){
+            setValidateModal({
+                text : 'لطفا کلمه عبور خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else{
+            let res = await axios.post('http://127.0.0.1:8000/api/login',inputs,{Accept: 'application/json'});
+            if(res.data.status == "error"){
+                setValidateModal({
+                    text : res.data.Message,
+                    type : 'error',
+                    status : true
+                });
+            }else{
+                dispatch(loginUser(res.data));
+                router.push('/');
+            }
+        }
     }
 
     return(
@@ -29,8 +65,8 @@ const LoginIndex = () => {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                    <form className="space-y-6">
-                        <div onSubmit={loginUserHandler}>
+                    <form className="space-y-6"  onSubmit={loginUserHandler}>
+                        <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                             ایمیل
                             </label>
@@ -79,6 +115,14 @@ const LoginIndex = () => {
                     </form>
                 </div>
             </div>
+            {
+                validateModal.status && <WarningModal 
+                                    showModal={validateModal.status}
+                                    setShowModal={setValidateModal}
+                                    text={validateModal.text}
+                                    type={validateModal.type}
+                                />
+            }
         </>
     )
 }

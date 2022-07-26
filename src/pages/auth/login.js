@@ -10,7 +10,7 @@ const LoginPage = props => {
             router.push('/')
         }
     },[]);
-    return <LoginIndex />
+    return <LoginIndex router={router} />
 }
 
 export default LoginPage;
