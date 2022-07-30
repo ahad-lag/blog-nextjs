@@ -2,12 +2,7 @@ import { Provider , useSelector } from 'react-redux';
 import NextNProgress from "nextjs-progressbar";
 import { store , persistor } from './../store/index'
 import { PersistGate } from 'redux-persist/integration/react'
-import '../styles/globals.css'
-import auth from '../hoc/auth';
-
-function checkAuth() {
-  return useSelector(state => state.auth.is_auth)
-}
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -21,7 +16,7 @@ function MyApp({ Component, pageProps }) {
       />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Component checkAuth={checkAuth} {...pageProps} />
+          <Component {...pageProps} />
         </PersistGate>
       </Provider>
     </>
