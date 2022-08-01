@@ -1,9 +1,15 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 import Link from "next/link";
 import Input from "../../general/input";
 import Button from "../../general/button";
+import WarningModal from "../../general/modal/warningModal";
+import { loginUser } from "../../../../store/slices/authSlice";
 
-const RegisterIndex = () => {
+const RegisterIndex = ({ router }) => {
+
+    const dispatch = useDispatch();
 
     const [ inputs ,setInputs ] = useState({
         firstName : '',
@@ -11,19 +17,88 @@ const RegisterIndex = () => {
         phone : '',
         email : '',
         userName : '',
-        password : ''
+        password : '',
+        repeatPassword : ''
+    });
+    const [ validateModal , setValidateModal] = useState({
+        text : 'هشدار',
+        type : 'warning',
+        status : false
     })
 
     const chengeInputHandler = (e) => {
         setInputs({
             ...inputs,
             [e.target.name] : e.target.value
-        })
-        console.log(e.target.name,e.target.value);
+        });
     }
 
-    const registerUserHandler = () => {
-        null
+    const registerUserHandler = async (e) => {
+        e.preventDefault();
+        if(! inputs.firstName){
+            setValidateModal({
+                text : 'لطفا نام خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.lastName){
+            setValidateModal({
+                text : 'لطفا نام خانوادگی خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.phone){
+            setValidateModal({
+                text : 'لطفا تلفن همراه خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.email){
+            setValidateModal({
+                text : 'لطفا ایمیل خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.userName){
+            setValidateModal({
+                text : 'لطفا نام کاربری خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.password){
+            setValidateModal({
+                text : 'لطفا رمز عبور خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else if(! inputs.repeatPassword){
+            setValidateModal({
+                text : 'لطفا تکرار رمز عبور خود را وارد کنید',
+                type : 'warning',
+                status : true
+            });
+        }else{
+            if(inputs.password === inputs.repeatPassword){
+                let res = await axios.post('http://127.0.0.1:8000/api/register',inputs,{Accept: 'application/json'});
+                console.log(res);
+                if(res.data.status == "success"){
+                    dispatch(loginUser(res.data));
+                    router.push('/');
+                }else if(res.data.status == "error"){
+                    setValidateModal({
+                        text : res.data.Message,
+                        type : 'error',
+                        status : true
+                    });
+                }
+            }else{
+                setValidateModal({
+                    text : 'رمزعبور مطابقت ندارد',
+                    type : 'warning',
+                    status : true
+                });
+            }
+        }
     }
 
     return(
@@ -100,9 +175,21 @@ const RegisterIndex = () => {
                             کلمه عبور
                         </label>
                         <Input 
-                            name='passWord'
+                            name='password'
                             type='password'
-                            value={inputs.passWord}
+                            value={inputs.password}
+                            placeholder='کلمه عبور را وارد کنید'
+                            onChenge={chengeInputHandler}
+                        />
+                    </div>
+                    <div className="mt-3">
+                        <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
+                            تکرار کلمه عبور
+                        </label>
+                        <Input 
+                            name='repeatPassword'
+                            type='password'
+                            value={inputs.repeatPassword}
                             placeholder='کلمه عبور را وارد کنید'
                             onChenge={chengeInputHandler}
                         />
@@ -123,6 +210,14 @@ const RegisterIndex = () => {
                     </form>
                 </div>
             </div>
+            {
+                validateModal.status && <WarningModal 
+                                    showModal={validateModal.status}
+                                    setShowModal={setValidateModal}
+                                    text={validateModal.text}
+                                    type={validateModal.type}
+                                />
+            }
         </>
     )
 }

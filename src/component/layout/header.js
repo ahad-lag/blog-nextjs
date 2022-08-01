@@ -49,7 +49,7 @@ const Header = () => {
                 </div>
             </div>
             {
-                (token !== null) 
+                (token) 
                     ? <div>
                         <LinkComponent 
                             href='/panel'
