@@ -5,11 +5,15 @@ import Link from "next/link";
 import LinkComponent from './general/linkComponent';
 import { logoutUser } from '../../store/slices/authSlice';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Header = () => {
 
     const dispatch = useDispatch();
+    const router = useRouter();
+
     const [token , setToken] = useState(useSelector(state => state.auth.token))
+
     const logoutHandler = async () => {
         let axiosConfig = {
             method: 'post',
@@ -23,6 +27,7 @@ const Header = () => {
         if(res.data.status == "success"){
             setToken(null)
             dispatch(logoutUser());
+            router.push('/');
         }
     }
 

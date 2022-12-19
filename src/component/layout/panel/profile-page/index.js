@@ -1,4 +1,5 @@
 import MasterPanelPage from "../masterPanelPage";
+import ProfileForm from "./profileForm";
 
 const ProfilePage = () => {
     return(
@@ -8,17 +9,12 @@ const ProfilePage = () => {
                     <h1 className="text-xl font-semibold text-gray-900">ویرایش پروفایل</h1>
                 </div>
                 <div className="mt-4 sm:mt-0 sm:flex-none">
-
-                    {/*Add modal Component*/}
-                    {/*<Modal*/}
-                    {/*    show={show}*/}
-                    {/*    setShow={setShow}*/}
-                    {/*>*/}
-                    {/*    ahad*/}
-                    {/*</Modal>*/}
-
+                    {/* - */}
                 </div>
             </div>
+
+            <ProfileForm />
+
         </MasterPanelPage>
     )
 }
